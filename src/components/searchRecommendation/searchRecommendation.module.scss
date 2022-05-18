@@ -36,6 +36,17 @@
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: -0.018em;
+
+      > div > mark {
+        all: unset;
+        font-weight: 800;
+      }
     }
+  }
+
+  .selected {
+    background-color: colors.$BG;
+    border: none;
+    border-radius: 5px;
   }
 }
