@@ -7,7 +7,7 @@ export interface ISearchInfo {
   body: IBody;
 }
 
-interface IBody {
+export interface IBody {
   items: IItems;
   numOfRows: number;
   pageNo: number;

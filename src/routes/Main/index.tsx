@@ -6,7 +6,6 @@ import styles from '../routes.module.scss';
 const Main = () => {
   return (
     <div className={styles.mainWrapper}>
-      {/* {isLoading && <div>로딩...</div>} */}
       <h1>
         국내 모든 임상시험 검색하고
         <br />

@@ -1,5 +1,12 @@
 @use 'styles/constants/colors';
 
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+}
+
 .recommendationWrapper {
   display: flex;
   flex-direction: column;
@@ -10,7 +17,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
 
-  ul > :first-child {
+  ul > .rcmdTitle {
     padding: 0;
     font-size: 13px;
     font-weight: 400;
@@ -49,4 +56,22 @@
     border: none;
     border-radius: 5px;
   }
+}
+
+.emptyResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 24px 24px 16px;
+  margin-top: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: colors.$WHITE;
+  border-radius: 20px;
+}
+
+.off {
+  display: block;
 }

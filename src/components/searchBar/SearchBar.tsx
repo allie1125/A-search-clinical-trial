@@ -11,7 +11,7 @@ const SearchBar = () => {
   const [keyEvent, setKeyEvent] = useRecoilState(keyDownState);
 
   const handleSearchWord = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchWord(e.currentTarget.value);
+    setSearchWord(e.currentTarget.value.trim());
   };
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {

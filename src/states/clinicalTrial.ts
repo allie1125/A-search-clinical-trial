@@ -13,5 +13,5 @@ export const searchedWordState = atom<any>({
 
 export const keyDownState = atom<number>({
   key: '#keydown',
-  default: 0,
+  default: -1,
 });

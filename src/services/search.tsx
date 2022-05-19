@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ISearchInfo } from 'types/clinicalTrial.d';
+import { IResponse } from 'types/clinicalTrial.d';
 
 interface Params {
   pageNo: number;
@@ -11,7 +11,7 @@ const URL = `/B551182/diseaseInfoService/getDissNameCodeList?`;
 
 export const getClinicalTrialSearchApi = async (params: Params) => {
   return axios
-    .get<ISearchInfo>(`${URL}`, {
+    .get<IResponse>(`${URL}`, {
       params: {
         ...params,
         serviceKey: SERVICE_KEY,
@@ -19,14 +19,13 @@ export const getClinicalTrialSearchApi = async (params: Params) => {
     })
     .then((res) => {
       console.log(res.data);
-      return res.data;
-    });
-
-  //   .then((res: any) => {
-  //     console.log(res.data);
-  //     const { data } = res.data.response.body.items;
-  //     return data;
-  //   })
-  //   .catch((e) => e);
-  // return fetchData;
+      if (res.data.response.body.totalCount === 0) {
+        return { items: { item: [] }, totalCount: 0 };
+      }
+      if (res.data.response.body.totalCount === 1) {
+        return { items: { item: [res.data.response.body.items.item] }, totalCount: 1 };
+      }
+      return res.data.response.body;
+    })
+    .catch((error) => console.error(error));
 };
