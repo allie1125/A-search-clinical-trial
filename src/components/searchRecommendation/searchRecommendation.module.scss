@@ -1,0 +1,77 @@
+@use 'styles/constants/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+}
+
+.recommendationWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  padding: 24px 24px 16px;
+  margin-top: 8px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+
+  ul > .rcmdTitle {
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(106, 115, 123);
+    letter-spacing: -0.018em;
+  }
+
+  ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: colors.$BLACK;
+    cursor: pointer;
+    -webkit-box-align: center;
+
+    .searchWord {
+      flex: 1 1 0%;
+      margin-left: 12px;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: -0.018em;
+
+      > div > mark {
+        all: unset;
+        font-weight: 800;
+      }
+    }
+  }
+
+  .selected {
+    background-color: colors.$BG;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.emptyResult {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  padding: 24px 24px 16px;
+  margin-top: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: colors.$WHITE;
+  border-radius: 20px;
+}
+
+.off {
+  display: block;
+}
