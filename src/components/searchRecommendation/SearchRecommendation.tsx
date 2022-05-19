@@ -2,6 +2,8 @@ import { useEffect, useCallback } from 'react';
 import { useQuery } from 'react-query';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { BsSearch } from 'react-icons/bs';
+import DOMPurify from 'dompurify';
+import parse from 'html-react-parser';
 
 import useDebounce from 'hooks/useDebounce';
 import { searchedWordState, keyDownState } from 'states/clinicalTrial';
@@ -40,7 +42,10 @@ const SearchRecommendation = () => {
   const setSearchTextBold = useCallback(
     (sickNm: any) => {
       const codes = sickNm.replace(RegExp(debouncedSearch, 'g'), `<mark>${debouncedSearch}</mark>`);
-      return <div dangerouslySetInnerHTML={{ __html: codes }} />;
+      const cleanHTML = DOMPurify.sanitize(codes, {
+        USE_PROFILES: { html: true },
+      });
+      return <div>{parse(cleanHTML)}</div>;
     },
     [debouncedSearch]
   );
@@ -60,6 +65,7 @@ const SearchRecommendation = () => {
                   <BsSearch className={styles.reactIcons} />
                 </span>
                 <span className={styles.searchWord}>{setSearchTextBold(sickNm)}</span>
+                {/* <span className={styles.searchWord}>{stringWithHtml(sickNm)}</span> */}
               </li>
             ))}
           </ul>

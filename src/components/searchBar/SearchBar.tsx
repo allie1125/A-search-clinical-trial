@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { BsSearch } from 'react-icons/bs';
 
